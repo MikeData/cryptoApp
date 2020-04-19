@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Users</title>
+</head>
+
+<body>
+    <h1>Users</h1>
+
+    <!-- MENU -->
+    <ul>
+        <li>
+            <a href="/" target="_self">Home</a>
+        </li>
+        <li>
+            <a href="/dashboard" target="_self">Dashboard</a>
+        </li>
+        <li>
+            <a href="/entries" target="_self">Entries</a>
+        </li>
+        <li>
+            <a href="/users" target="_self">Users</a>
+        </li>
+        <li>
+            <a href="/setup" target="_self">Setup</a>
+        </li>
+    </ul>
+    <hr/>
+
+    <!-- ADD NEW USER -->
+    <form action="/users" method="POST">
+        <label for="user">User Name</label>
+        <input type="text" name="alias" placeholder="User Name" />
+        <input type="submit">
+    </form>
+
+    <br><br>
+
+    <!-- ENTRIES TABLE -->
+    <table id="entriesTable" border="1" frame="box" align="center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>User</th>
+                <th>Total Ammount</th>
+                <th>Created Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Maikis</td>
+                <td>0.250</td>
+                <td>16-04-2020</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

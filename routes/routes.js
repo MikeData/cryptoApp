@@ -1,5 +1,8 @@
 const path = require('path');
 const userRoutes = require('./users');
+const entriesRoutes = require('./entries');
+const dashboardRoutes = require('./dashboard');
+const setupRoutes = require('./setup');
 
 const appRouter = (app, fs) => {
 
@@ -8,7 +11,9 @@ const appRouter = (app, fs) => {
     });
 
     userRoutes(app, fs);
-
+    entriesRoutes(app, fs);
+    dashboardRoutes(app, fs);
+    setupRoutes(app, fs);
 
 };
 

@@ -3,54 +3,45 @@ const userRoutes = (app, fs) => {
     const path = require('path');
     const dataPath = './data/users.json';
 
-    // Helper Methods
-    const readFile = (callback, returnJson = false, filePath = dataPath, encoding = 'utf8') => {
-        fs.readFile(filePath, encoding, (err, data) => {
-            if (err) {
-                throw err;
-            }
+    //app.get
 
-            callback(returnJson ? JSON.parse(data) : data);
-        });
-    };
-    const writeFile = (fileData, callback, filePath = dataPath, encoding = 'utf8') => {
-        fs.writeFile(filePath, fileData, encoding, (err) => {
-            if (err) {
-                throw err;
-            }
-
-            callback();
-        });
-    };
-
-    // READ
-    app.get('/users/listAll', (req, res) => {
-        fs.readFile(dataPath, 'utf8', (err, data) => {
-            if (err) {
-                throw err;
-            }
-            res.send(JSON.parse(data));
-        });
-    });
     app
         .get('/users', (req, res) => {
             //console.log(req.url);
             res.sendFile(path.join(__dirname, "../views/users.html"));
         })
         .post('/users', (req, res) => {
-            readFile(data => {
-                    const newUserId = Object.keys(data).length + 1;
+            // read users data
+            let rawdata = fs.readFileSync(path.join(__dirname, "../data/users.json"));
+            let users = JSON.parse(rawdata);
 
-                    // Add user
-                    data[newUserId] = JSON.parse(req.body.data);
+            // create new user
+            let newId = users.length + 1;
+            let newUser = {
+                "alias": req.body.alias,
+                "totalAmmount": 0,
+                "id": newId
+            };
+            console.log(newUser);
+            users.push(newUser);
 
-                    /*writeFile(JSON.stringify(data, null, 2), () => {
-                        res.status(200).send('new user added');
-                    });*/
-                    res.status(200).send('new user added');
-                },
-                true);
+            // save new user to users data
+            fs.writeFile(path.join(__dirname, "../data/users.json"), JSON.stringify(users, null, 3), function(err) {
+                if (err) return console.log(err);
+                console.log('Added new user to database');
+            });
+
+            // reroute to the users view
+            res.sendFile(path.join(__dirname, "../views/users.html"));
         });
+
+    const loadTable = () => {
+        let rawdata = fs.readFileSync('users.json');
+        let users = JSON.parse(rawdata);
+        console.log(users + "users.js");
+
+        return users;
+    }
 };
 
 module.exports = userRoutes;

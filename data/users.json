@@ -1,18 +1,16 @@
-{
-    "1": {
+[{
         "alias": "Maikis",
         "totalAmmount": 0.25,
         "id": 1
     },
-    "2": {
+    {
         "alias": "Norte",
         "totalAmmount": 0.25,
         "id": 2
     },
-    "3": {
+    {
         "alias": "Ter",
         "totalAmmount": 0.59,
         "id": 3
     }
-
-}
+]

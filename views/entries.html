@@ -1,60 +1,107 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Entries</title>
-</head>
+    <head>
+        <title>Entries</title>
+    </head>
 
-<body>
-    <h1>Entries</h1>
+    <body>
+        <h1>Entries</h1>
 
-    <!-- MENU -->
-    <ul>
-        <li>
-            <a href="/" target="_self">Home</a>
-        </li>
-        <li>
-            <a href="/dashboard" target="_self">Dashboard</a>
-        </li>
-        <li>
-            <a href="/entries" target="_self">Entries</a>
-        </li>
-        <li>
-            <a href="/users" target="_self">Users</a>
-        </li>
-        <li>
-            <a href="/setup" target="_self">Setup</a>
-        </li>
-    </ul>
-    <hr/>
+        <!-- MENU -->
+        <ul>
+            <li>
+                <a href="/" target="_self">Home</a>
+            </li>
+            <li>
+                <a href="/dashboard" target="_self">Dashboard</a>
+            </li>
+            <li>
+                <a href="/entries" target="_self">Entries</a>
+            </li>
+            <li>
+                <a href="/users" target="_self">Users</a>
+            </li>
+            <li>
+                <a href="/setup" target="_self">Setup</a>
+            </li>
+        </ul>
+        <hr/>
 
-    <!-- ADD NEW ENTRY -->
-    <form action="/entries" method="POST">
-        <label for="user">User</label>
-        <input type="text" name="user" placeholder="User Name">
-        <label for="ammont">Ammount</label>
-        <input type="number" step="0.000001" min="0" name="ammount" placeholder="Ammount">
-        <input type="submit">
-    </form>
-    <br><br>
+        <!-- ADD NEW ENTRY -->
+        <form action="/entries" method="POST">
+            <label for="user">User</label>
+            <input type="text" name="user" placeholder="User">
+            <!--select id="userSelector" name="user">
+                <option value="" disabled selected>Select a user</option>
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+              </select-->
+            <label for="ammont">Ammount</label>
+            <input type="number" step="0.001" min="0" name="ammount" placeholder="Ammount">
+            <input type="submit">
+        </form>
+        <br><br>
 
-    <!-- ENTRIES TABLE -->
-    <table border="1" frame="box" align="center">
-        <tr>
-            <th>Id</th>
-            <th>User</th>
-            <th>Ammount</th>
-            <th>Date</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Maiki</td>
-            <td>0.25</td>
-            <td>16-04-2020</td>
-        </tr>
+        <!-- ENTRIES TABLE -->
+        <table id="entriesTable" border="1" frame="box" align="center">
+            <thead id="entriesColumnData">
+                <tr>
+                    <th>Id</th>
+                    <th>User</th>
+                    <th>Ammount</th>
+                    <th>Created Date</th>
+                </tr>
+            </thead>
+            <tbody id="entriesRowData">
+                <!--tr >
+                    <td>1</td>
+                    <td>Maikis</td>
+                    <td>0.250</td>
+                    <td>16-04-2020</td>
+                </tr-->
+            </tbody>
+        </table>
 
-    </table>
+        <script>
+            // GET User Info
+            let xmlhttp = new XMLHttpRequest();
+            let url = 'http://localhost:3001/entries/list';
 
-</body>
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let entries = JSON.parse(this.responseText);
+                    createTable(entries);
+                }
+            };
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+
+            // Create Table
+            function createTable(entries) {
+        
+                entries.forEach(entry => {
+                    let table = document.getElementById("entriesTable");
+                    let row = table.insertRow(-1);
+                    let cell1 = row.insertCell(0);
+                    let cell2 = row.insertCell(1);
+                    let cell3 = row.insertCell(2);
+                    let cell4 = row.insertCell(3);
+                    cell1.innerHTML = entry.id;
+                    cell2.innerHTML = entry.user;
+                    cell3.innerHTML = entry.ammount;
+                    cell4.innerHTML = "TODAY";
+                });
+            }
+
+            function userSelector(users){
+                let userselector = document.getElementById("userSelector");
+                userSelector.innerHTML
+            }
+
+        </script>
+    </body>
 
 </html>

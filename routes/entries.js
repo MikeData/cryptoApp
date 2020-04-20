@@ -3,6 +3,13 @@ const entriesRoutes = (app, fs) => {
     const path = require('path');
     const dataPath = './data/entries.json';
 
+    app.get('/entries/list', (req, res) => {
+        let rawdata = fs.readFileSync(path.join(__dirname, "../data/entries.json"));
+        let entries = JSON.parse(rawdata);
+
+        res.send(entries);
+    })
+
     app
         .get('/entries', (req, res) => {
             //console.log(req.url);
@@ -16,8 +23,8 @@ const entriesRoutes = (app, fs) => {
             // create new entry
             let newId = entries.length + 1;
             let newEntry = {
-                "alias": req.body.alias,
-                "totalAmmount": 0,
+                "user": req.body.user,
+                "ammount": req.body.ammount,
                 "id": newId
             };
             console.log(newEntry);
@@ -33,13 +40,6 @@ const entriesRoutes = (app, fs) => {
             res.sendFile(path.join(__dirname, "../views/entries.html"));
         });
 
-    const loadTable = () => {
-        let rawdata = fs.readFileSync('entries.json');
-        let entries = JSON.parse(rawdata);
-        console.log(entries + "entries.js");
-
-        return entries;
-    }
 };
 
 module.exports = entriesRoutes;

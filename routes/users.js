@@ -3,7 +3,12 @@ const userRoutes = (app, fs) => {
     const path = require('path');
     const dataPath = './data/users.json';
 
-    //app.get
+    app.get('/users/list', (req, res) => {
+        let rawdata = fs.readFileSync(path.join(__dirname, "../data/users.json"));
+        let users = JSON.parse(rawdata);
+
+        res.send(users);
+    })
 
     app
         .get('/users', (req, res) => {
@@ -35,13 +40,6 @@ const userRoutes = (app, fs) => {
             res.sendFile(path.join(__dirname, "../views/users.html"));
         });
 
-    const loadTable = () => {
-        let rawdata = fs.readFileSync('users.json');
-        let users = JSON.parse(rawdata);
-        console.log(users + "users.js");
-
-        return users;
-    }
 };
 
 module.exports = userRoutes;

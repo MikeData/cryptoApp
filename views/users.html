@@ -37,9 +37,9 @@
 
     <br><br>
 
-    <!-- ENTRIES TABLE -->
-    <table id="entriesTable" border="1" frame="box" align="center">
-        <thead>
+    <!-- USERS TABLE -->
+    <table id="usersTable" border="1" frame="box" align="center">
+        <thead id="usersColumnData">
             <tr>
                 <th>Id</th>
                 <th>User</th>
@@ -47,22 +47,47 @@
                 <th>Created Date</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
+        <tbody id="usersRowData">
+            <!--tr >
                 <td>1</td>
                 <td>Maikis</td>
                 <td>0.250</td>
                 <td>16-04-2020</td>
-            </tr>
+            </tr-->
         </tbody>
     </table>
 
-    <p id="userName"></p>
-    <p id="totalAmmount"></p>
+    <script>
+        // GET User Info
+        let xmlhttp = new XMLHttpRequest();
+        let url = 'http://localhost:3001/users/list';
 
-    <script type="text/javascript" src="routes.js">
-        let users = feedUsers();
-        console.log(users);
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let users = JSON.parse(this.responseText);
+                createTable(users);
+            }
+        };
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+
+        // Create Table
+        function createTable(users) {
+            
+        
+            users.forEach(user => {
+                let table = document.getElementById("usersTable");
+                let row = table.insertRow(-1);
+                let cell1 = row.insertCell(0);
+                let cell2 = row.insertCell(1);
+                let cell3 = row.insertCell(2);
+                let cell4 = row.insertCell(3);
+                cell1.innerHTML = user.id;
+                cell2.innerHTML = user.alias;
+                cell3.innerHTML = user.totalAmmount;
+                cell4.innerHTML = "TODAY";
+            });
+        }
     </script>
 
 </body>

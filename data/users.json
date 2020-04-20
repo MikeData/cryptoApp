@@ -1,16 +1,17 @@
-[{
-        "alias": "Maikis",
-        "totalAmmount": 0.25,
-        "id": 1
-    },
-    {
-        "alias": "Norte",
-        "totalAmmount": 0.25,
-        "id": 2
-    },
-    {
-        "alias": "Ter",
-        "totalAmmount": 0.59,
-        "id": 3
-    }
+[
+   {
+      "alias": "Maikis",
+      "totalAmmount": 0.5,
+      "id": 1
+   },
+   {
+      "alias": "Norte",
+      "totalAmmount": 0.25,
+      "id": 2
+   },
+   {
+      "alias": "Ter",
+      "totalAmmount": 0.59,
+      "id": 3
+   }
 ]

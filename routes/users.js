@@ -1,7 +1,6 @@
 const userRoutes = (app, fs) => {
 
     const path = require('path');
-    const dataPath = './data/users.json';
 
     app.get('/users/list', (req, res) => {
         let rawdata = fs.readFileSync(path.join(__dirname, "../data/users.json"));

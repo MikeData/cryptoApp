@@ -21,6 +21,8 @@ In order to run the protoype just type following commands:
 
 git clone https://github.com/MikeData/cryptoApp.git
 
+cd cryptoApp
+
 npm install
 
 npm start

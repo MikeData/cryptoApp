@@ -1,17 +1,32 @@
 [
    {
-      "alias": "Maikis",
-      "totalAmmount": 0.5,
+      "alias": "CIC",
+      "totalAmmount": 0.00310156,
       "id": 1
    },
    {
-      "alias": "Norte",
-      "totalAmmount": 0.25,
+      "alias": "Maikis",
+      "totalAmmount": 0.42,
       "id": 2
    },
    {
-      "alias": "Ter",
-      "totalAmmount": 0.605,
+      "alias": "Norte",
+      "totalAmmount": 0.592,
       "id": 3
+   },
+   {
+      "alias": "Star",
+      "totalAmmount": 0.699,
+      "id": 4
+   },
+   {
+      "alias": "Alice",
+      "totalAmmount": 0.06,
+      "id": 5
+   },
+   {
+      "alias": "Doc",
+      "totalAmmount": 0.042,
+      "id": 6
    }
 ]

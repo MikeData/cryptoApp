@@ -1,32 +1,57 @@
 [
    {
-      "alias": "CIC",
-      "totalAmmount": 0.00310156,
+      "user": "Maikis",
+      "ammount": 0.25,
       "id": 1
    },
    {
-      "alias": "Maikis",
-      "totalAmmount": 0.42,
+      "user": "Norte",
+      "ammount": 0.25,
       "id": 2
    },
    {
-      "alias": "Norte",
-      "totalAmmount": 0.592,
+      "user": "Star",
+      "ammount": 0.699,
       "id": 3
    },
    {
-      "alias": "Star",
-      "totalAmmount": 0.699,
+      "user": "Alice",
+      "ammount": 0.06,
       "id": 4
    },
    {
-      "alias": "Alice",
-      "totalAmmount": 0.06,
+      "user": "Norte",
+      "ammount": 0.29,
       "id": 5
    },
    {
-      "alias": "Doc",
-      "totalAmmount": 0.042,
+      "user": "Maikis",
+      "ammount": 0.118,
       "id": 6
+   },
+   {
+      "user": "Maikis",
+      "ammount": 0.052,
+      "id": 7
+   },
+   {
+      "user": "Norte",
+      "ammount": 0.052,
+      "id": 8
+   },
+   {
+      "user": "CIC",
+      "ammount": 0.00256156,
+      "id": 9
+   },
+   {
+      "user": "Doc",
+      "ammount": 0.042,
+      "id": 10
+   },
+   {
+      "user": "CIC",
+      "ammount": 0.00054,
+      "id": 11
    }
 ]

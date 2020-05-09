@@ -35,6 +35,9 @@ npm start
 - Limitar el user del entry a los de la lista
 - Logica de vaults
 - Formatear numeros 0.00000000
+- Ordenar menu
+- Vault system add user route Vaults/:id custom view
+- Data validation
 
 
 

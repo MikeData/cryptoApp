@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vaults</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+
+<body>
+    <!--MENU-->
+    <h1>Vaults</h1>
+    <ul>
+        <li>
+            <a href="/" target="_self">Home</a>
+        </li>
+        <li>
+            <a href="/dashboard" target="_self">Dashboard</a>
+        </li>
+        <li>
+            <a href="/users" target="_self">Users</a>
+        </li>
+        <li>
+            <a href="/entries" target="_self">Entries</a>
+        </li>
+        <li>
+            <a href="/vaults" target="_self">Vaults</a>
+        </li>
+        <li>
+            <a href="/setup" target="_self">Setup</a>
+        </li>
+    </ul>
+    <hr/>
+
+    <label for="users">Select a user:</label>
+    <select id="usersSelector">
+        <option id="defaultValue" selected="true" disabled="disabled"></option> 
+    </select>
+    <button onclick="test()">Select</button>
+
+    <p id="test">Hola</p>
+
+
+
+    <script>
+        // GET User info
+        let xmlhttp = new XMLHttpRequest();
+            let url = 'http://localhost:3001/users/list';
+
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let users = JSON.parse(this.responseText);
+                    console.log(users);
+                    let userNames = getUserNames(users);
+                    console.log(userNames);
+                    loadUserSelector(users);
+                }
+            };
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+
+            // Load User Selector
+            function loadUserSelector(users){
+                users.forEach(user => {
+                    let selector = document.getElementById("usersSelector");
+                    selector.options[selector.options.length] = new Option(user.alias, user.id);
+            });
+            };
+
+            // TEST
+            function test () {
+                var e = document.getElementById("usersSelector");
+                var p = document.getElementById("test");
+                var strUser = e.options[e.selectedIndex].value;
+                console.log(strUser);
+                p.innerHTML=strUser;
+            }
+            
+
+            // Getter Functions
+            function getUserNames(users){
+                let userNames = [];
+                users.forEach(user => {
+                    userNames.push(user.alias);
+                });
+                return userNames;
+            }
+            
+    </script>
+</body>
+
+</html>

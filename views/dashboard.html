@@ -4,7 +4,7 @@
     <head>
         <title>Dashboard</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="dashboard.css">
+        <!--link rel="stylesheet" type="text/css" href="dashboard.css"-->
         <style>
             * {
                 box-sizing: border-box;
@@ -52,7 +52,7 @@
         <div class="row">
             <div class="column">
                 <h1 align="center">Total Entries</h1>
-                <p align="center" id="entriesTotal"></p>
+                <p align="center" style="font-size:160%;" id="entriesTotal"></p>
                 <div align="center">
                     <canvas id="myChart" width="400" height="400"></canvas>
                 </div>
@@ -60,7 +60,7 @@
             </div>
             <div class="column">
                 <h1 align="center">HODL Vault</h1>
-                <p align="center" id="hodlTotal"></p>
+                <p align="center" style="font-size:160%;" id="hodlTotal"></p>
                 <div align="center">
                     <canvas id="myChart2" width="400" height="400"></canvas>
                 </div>
@@ -68,7 +68,7 @@
             </div>
             <div class="column">
                 <h1 align="center">Trade Vault</h1>
-                <p align="center" id="tradeTotal"></p>
+                <p align="center" style="font-size:160%;" id="tradeTotal"></p>
                 <div align="center">
                     <canvas id="myChart3" width="400" height="400"></canvas>
                 </div>      
@@ -208,7 +208,7 @@
                 });
                 console.log(userTotals);
                 var ctx = document.getElementById("entriesTotal");
-                ctx.innerHTML=entryVault;
+                ctx.innerHTML=entryVault.toFixed(3);
                 return userTotals;
             }
             function getUserTrade(users){
@@ -234,7 +234,7 @@
                 });
                 console.log(hodlTotal);
                 var ctx = document.getElementById("hodlTotal");
-                ctx.innerHTML=hodlTotal;
+                ctx.innerHTML=hodlTotal.toFixed(3);
             }
             function getTradeTotal(userTrade){
                 let tradeTotal = 0;
@@ -243,7 +243,7 @@
                 });
                 console.log(tradeTotal);
                 var ctx = document.getElementById("tradeTotal");
-                ctx.innerHTML=tradeTotal;
+                ctx.innerHTML=tradeTotal.toFixed(3);
             }
         </script>
     </body>

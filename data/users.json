@@ -3,42 +3,42 @@
       "alias": "CIC",
       "totalAmount": 0.00310156,
       "tradeAmount": 0.00310156,
-      "hodlAmount":  0.00000000,
+      "hodlAmount": 0,
       "id": 1
    },
    {
       "alias": "Maikis",
-      "totalAmount": 0.42000000,
-      "tradeAmount": 0.42000000,
-      "hodlAmount":  0.00000000,
+      "totalAmount": 0.42,
+      "tradeAmount": 0.42,
+      "hodlAmount": 0,
       "id": 2
    },
    {
       "alias": "Norte",
-      "totalAmount": 0.59200000,
-      "tradeAmount": 0.59200000,
-      "hodlAmount":  0.00000000,
+      "totalAmount": 0.592,
+      "tradeAmount": 0.592,
+      "hodlAmount": 0,
       "id": 3
    },
    {
       "alias": "Star",
-      "totalAmount": 0.69900000,
-      "tradeAmount": 0.00000000,
-      "hodlAmount":  0.69900000,
+      "totalAmount": 0.699,
+      "tradeAmount": 0,
+      "hodlAmount": 0.699,
       "id": 4
    },
    {
       "alias": "Alice",
-      "totalAmount": 0.06000000,
-      "tradeAmount": 0.00000000,
-      "hodlAmount":  0.06000000,
+      "totalAmount": 0.06,
+      "tradeAmount": 0,
+      "hodlAmount": 0.06,
       "id": 5
    },
    {
       "alias": "Doc",
-      "totalAmount": 0.04200000,
-      "tradeAmount": 0.00000000,
-      "hodlAmount":  0.04200000,
+      "totalAmount": 0.042,
+      "tradeAmount": 0,
+      "hodlAmount": 0.042,
       "id": 6
    }
 ]

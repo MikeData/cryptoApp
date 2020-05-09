@@ -1,57 +1,57 @@
 [
    {
       "user": "Maikis",
-      "ammount": 0.25,
+      "amount": 0.25,
       "id": 1
    },
    {
       "user": "Norte",
-      "ammount": 0.25,
+      "amount": 0.25,
       "id": 2
    },
    {
       "user": "Star",
-      "ammount": 0.699,
+      "amount": 0.699,
       "id": 3
    },
    {
       "user": "Alice",
-      "ammount": 0.06,
+      "amount": 0.06,
       "id": 4
    },
    {
       "user": "Norte",
-      "ammount": 0.29,
+      "amount": 0.29,
       "id": 5
    },
    {
       "user": "Maikis",
-      "ammount": 0.118,
+      "amount": 0.118,
       "id": 6
    },
    {
       "user": "Maikis",
-      "ammount": 0.052,
+      "amount": 0.052,
       "id": 7
    },
    {
       "user": "Norte",
-      "ammount": 0.052,
+      "amount": 0.052,
       "id": 8
    },
    {
       "user": "CIC",
-      "ammount": 0.00256156,
+      "amount": 0.00256156,
       "id": 9
    },
    {
       "user": "Doc",
-      "ammount": 0.042,
+      "amount": 0.042,
       "id": 10
    },
    {
       "user": "CIC",
-      "ammount": 0.00054,
+      "amount": 0.00054,
       "id": 11
    }
 ]

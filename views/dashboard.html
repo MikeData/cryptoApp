@@ -4,9 +4,30 @@
     <head>
         <title>Dashboard</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="dashboard.css">
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            
+            /* Create three equal columns that floats next to each other */
+            .column {
+                float: left;
+                width: 33.33%;
+                padding: 10px;
+            }
+            
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+        </style>
     </head>
 
     <body>
+        <!-- MENU -->
         <h1>Dashboard</h1>
         <ul>
             <li>
@@ -27,8 +48,31 @@
         </ul>
         <hr/>
 
-        <div align="center">
-            <canvas id="myChart" width="400" height="400"></canvas>
+        <!-- Graphs -->
+        <div class="row">
+            <div class="column">
+                <h1 align="center">Total Entries</h1>
+                <p align="center" id="entriesTotal"></p>
+                <div align="center">
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                </div>
+                
+            </div>
+            <div class="column">
+                <h1 align="center">HODL Vault</h1>
+                <p align="center" id="hodlTotal"></p>
+                <div align="center">
+                    <canvas id="myChart2" width="400" height="400"></canvas>
+                </div>
+                
+            </div>
+            <div class="column">
+                <h1 align="center">Trade Vault</h1>
+                <p align="center" id="tradeTotal"></p>
+                <div align="center">
+                    <canvas id="myChart3" width="400" height="400"></canvas>
+                </div>      
+            </div>
         </div>
         
             
@@ -43,16 +87,25 @@
                     console.log(users);
                     let userNames = getUserNames(users);
                     let userTotals = getUserTotals(users);
+                    let userTrade = getUserTrade(users);
+                    let userHodl = getUserHodl(users);
                     console.log(userNames);
                     console.log(userTotals);
-                    createChart(userNames, userTotals);
+                    console.log(userTrade);
+                    console.log(userHodl);
+                    createTotalEntriesChart(userNames, userTotals);
+                    createTradeAmountChart(userNames, userTrade);
+                    createHodlAmountChart(userNames, userHodl);
+                    getHodlTotal(userHodl);
+                    getTradeTotal(userTrade);
+
                 }
             };
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
 
-            // Create Chart
-            function createChart(userNames, userTotals){
+            // Create Charts ENTRIES
+            function createTotalEntriesChart(userNames, userTotals){
                 var ctx = document.getElementById("myChart");
                 
                 var oilData = {
@@ -79,8 +132,66 @@
 
                 }
                 });
-            }
-            
+            } 
+            // Create Charts TRADE 
+            function createTradeAmountChart(userNames, userTrade){
+                var ctx = document.getElementById("myChart3");
+                
+                var oilData = {
+                    labels: userNames,
+                    datasets: [
+                        {
+                            data: userTrade,
+                            backgroundColor: [
+                                "#FF6384",
+                                "#63FF84",
+                                "#8463FF",
+                                "#6384FF",
+                                "#FF4500",
+                                "#FFD700"
+                            ]
+                        }]
+                };
+                var myChart2 = new Chart(ctx, {
+                type: 'doughnut',
+                data: oilData,
+                options: {
+                    cutoutPercentage: 40,
+                    responsive: false,
+
+                }
+                });
+            }    
+            // Create Charts HODL 
+            function createHodlAmountChart(userNames, userHodl){
+                var ctx = document.getElementById("myChart2");
+                
+                var oilData = {
+                    labels: userNames,
+                    datasets: [
+                        {
+                            data: userHodl,
+                            backgroundColor: [
+                                "#FF6384",
+                                "#63FF84",
+                                "#8463FF",
+                                "#6384FF",
+                                "#FF4500",
+                                "#FFD700"
+                            ]
+                        }]
+                };
+                var myChart2 = new Chart(ctx, {
+                type: 'doughnut',
+                data: oilData,
+                options: {
+                    cutoutPercentage: 40,
+                    responsive: false,
+
+                }
+                });
+            }          
+            // Getter Functions
             function getUserNames(users){
                 let userNames = [];
                 users.forEach(user => {
@@ -88,14 +199,51 @@
                 });
                 return userNames;
             }
-
             function getUserTotals(users){
                 let userTotals = [];
+                let entryVault = 0;
                 users.forEach(user => {
-                    userTotals.push(user.totalAmmount);
+                    userTotals.push(user.totalAmount);
+                    entryVault += user.totalAmount;
                 });
                 console.log(userTotals);
+                var ctx = document.getElementById("entriesTotal");
+                ctx.innerHTML=entryVault;
                 return userTotals;
+            }
+            function getUserTrade(users){
+                let userTrade = [];
+                users.forEach(user => {
+                    userTrade.push(user.tradeAmount);
+                });
+                console.log(userTrade);
+                return userTrade;
+            }
+            function getUserHodl(users){
+                let userHodl = [];
+                users.forEach(user => {
+                    userHodl.push(user.hodlAmount);
+                });
+                console.log(userHodl);
+                return userHodl;
+            }
+            function getHodlTotal(userHodl){
+                let hodlTotal = 0;
+                userHodl.forEach(hodlAmount => {
+                    hodlTotal += hodlAmount;
+                });
+                console.log(hodlTotal);
+                var ctx = document.getElementById("hodlTotal");
+                ctx.innerHTML=hodlTotal;
+            }
+            function getTradeTotal(userTrade){
+                let tradeTotal = 0;
+                userTrade.forEach(tradeAmount => {
+                    tradeTotal += tradeAmount;
+                });
+                console.log(tradeTotal);
+                var ctx = document.getElementById("tradeTotal");
+                ctx.innerHTML=tradeTotal;
             }
         </script>
     </body>

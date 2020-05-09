@@ -39,8 +39,8 @@
                 <option value="mercedes">Mercedes</option>
                 <option value="audi">Audi</option>
               </select-->
-            <label for="ammont">Ammount</label>
-            <input type="number" step="0.001" min="0" name="ammount" placeholder="Ammount">
+            <label for="ammont">Amount</label>
+            <input type="number" step="0.001" min="0" name="amount" placeholder="Amount">
             <input type="submit">
         </form>
         <br><br>
@@ -51,7 +51,7 @@
                 <tr>
                     <th>Id</th>
                     <th>User</th>
-                    <th>Ammount</th>
+                    <th>Amount</th>
                     <th>Created Date</th>
                 </tr>
             </thead>
@@ -91,7 +91,7 @@
                     let cell4 = row.insertCell(3);
                     cell1.innerHTML = entry.id;
                     cell2.innerHTML = entry.user;
-                    cell3.innerHTML = entry.ammount;
+                    cell3.innerHTML = entry.amount;
                     cell4.innerHTML = "TODAY";
                 });
             }

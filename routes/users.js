@@ -23,7 +23,9 @@ const userRoutes = (app, fs) => {
             let newId = users.length + 1;
             let newUser = {
                 "alias": req.body.alias,
-                "totalAmmount": 0,
+                "totalAmount": 0,
+                "tradeAmount": 0,
+                "hodlAmount" : 0,
                 "id": newId
             };
             console.log(newUser);

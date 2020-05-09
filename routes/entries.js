@@ -3,18 +3,18 @@ const entriesRoutes = (app, fs) => {
     const path = require('path');
 
     // HELPER METHODS
-    const addEntryAmmount = (userName, ammount) => {
+    const addEntryAmount = (userName, amount) => {
         // read users data
         let rawdata = fs.readFileSync(path.join(__dirname, "../data/users.json"));
         let users = JSON.parse(rawdata);
         let userAlias = userName;
-        // add ammount to user totalAmmount
+        // add amount to user totalAmount
         users.forEach(user => {
             if(user.alias == userAlias){
-                user.totalAmmount += parseFloat(ammount);
+                user.totalAmount += parseFloat(amount);
             
             }else{
-                console.log("User not found. No ammount added");
+                console.log("User not found. No amount added");
             }
         });
 
@@ -47,14 +47,14 @@ const entriesRoutes = (app, fs) => {
             let newId = entries.length + 1;
             let newEntry = {
                 "user": req.body.user,
-                "ammount": parseFloat(req.body.ammount),
+                "amount": parseFloat(req.body.amount),
                 "id": newId
             };
             console.log(newEntry);
             entries.push(newEntry);
 
-            // add ammount to user totalAmmount
-            addEntryAmmount(req.body.user, req.body.ammount);
+            // add amount to user totalAmount
+            addEntryAmount(req.body.user, req.body.amount);
 
             // save new entry to entries data
             fs.writeFile(path.join(__dirname, "../data/entries.json"), JSON.stringify(entries, null, 3), function(err) {

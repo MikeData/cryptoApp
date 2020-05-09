@@ -28,6 +28,14 @@ npm install
 npm start
 
 
+----------------------------------------------
+# To do
+- Revisar grafico 'oildata'
+- Limpiar Funciones del dashboard.html sacar a otro script
+- Limitar el user del entry a los de la lista
+- Logica de vaults
+- Formatear numeros 0.00000000
+
 
 
 
